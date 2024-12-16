@@ -50,26 +50,29 @@ const PlaylistConverter = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="flex items-center border-2 border-red-500 rounded-lg overflow-hidden">
-          <FaYoutube className="text-red-500 text-2xl ml-3" />
-          <input
-            type="text"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            placeholder="Enter YouTube Playlist URL"
-            className="flex-grow p-3 outline-none"
-            required
-          />
+        <div className="flex flex-col sm:flex-row items-stretch border-2 border-red-500 rounded-lg overflow-hidden">
+          <div className="flex items-center flex-grow">
+            <FaYoutube className="text-red-500 text-2xl ml-3 hidden sm:block" />
+            <input
+              type="text"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              placeholder="Enter YouTube Playlist URL"
+              className="w-full p-3 outline-none"
+              required
+            />
+          </div>
           <button
             type="submit"
             disabled={loading}
             className={`
-              px-4 py-3 
+              w-full sm:w-auto px-4 py-3 
               ${
                 loading
                   ? "bg-gray-400 cursor-not-allowed"
                   : "bg-red-500 hover:bg-red-600 text-white"
               }
+              flex items-center justify-center
             `}
           >
             {loading ? <FaSpinner className="animate-spin" /> : "Convert"}
