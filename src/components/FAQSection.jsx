@@ -1,9 +1,49 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaQuestionCircle, FaChevronDown } from "react-icons/fa";
+import {
+  FaQuestionCircle,
+  FaChevronDown,
+  FaExternalLinkAlt,
+} from "react-icons/fa";
 
 const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  // Function to render text with styled links using [text](url) syntax
+  const renderAnswer = (text) => {
+    const linkRegex = /\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g;
+    const parts = [];
+    let match;
+    let lastIndex = 0;
+
+    while ((match = linkRegex.exec(text)) !== null) {
+      // Push text before the link
+      if (match.index > lastIndex) {
+        parts.push(text.slice(lastIndex, match.index));
+      }
+      // Push the link
+      parts.push(
+        <a
+          key={match[2]} // Use URL as key
+          href={match[2]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-red-500 underline inline-flex items-center space-x-1 mx-1"
+        >
+          <span>{match[1]}</span>
+          <FaExternalLinkAlt className="ml-1 text-xs" />
+        </a>
+      );
+      lastIndex = linkRegex.lastIndex;
+    }
+
+    // Push remaining text after the last link
+    if (lastIndex < text.length) {
+      parts.push(text.slice(lastIndex));
+    }
+
+    return parts;
+  };
 
   return (
     <div className="border-b border-gray-200 py-4">
@@ -31,7 +71,7 @@ const FAQItem = ({ question, answer }) => {
             transition={{ duration: 0.3 }}
             className="text-gray-600 mt-4 overflow-hidden"
           >
-            <p>{answer}</p>
+            <p>{renderAnswer(answer)}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -64,11 +104,12 @@ const FAQSection = () => {
     {
       question: "Can I download YouTube videos?",
       answer:
-        "We only support the conversion of YouTube videos to Audio in 320kbps quality/ For Youtube video downloads, check out Collect Youtube",
+        "We only support the conversion of YouTube videos to Audio in 320kbps quality. For Youtube video downloads, check out [CollectYouTube](https://collectyoutube.com).",
     },
     {
-      question: "Can I convert individual YouTube video urls???",
-      answer: "No, for individual video conversion, check out Mp3Tube.io",
+      question: "Can I convert individual YouTube video urls?",
+      answer:
+        "No, for individual video conversion, check out [Mp3Tube](https://mp3tube.io).",
     },
   ];
 
