@@ -14,6 +14,9 @@ const PlaylistItems = ({ playlist }) => {
       return;
     }
 
+    // Fallback for undefined filename
+    const filename = item.filename || `${item.title}.mp3`;
+
     setDownloadingItems((prev) => ({ ...prev, [item.video_id]: true }));
 
     try {
@@ -27,7 +30,7 @@ const PlaylistItems = ({ playlist }) => {
       );
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", item.filename); // Use the original filename from backend
+      link.setAttribute("download", filename); // Use the fallback filename
       document.body.appendChild(link);
       link.click();
       link.parentNode.removeChild(link);
