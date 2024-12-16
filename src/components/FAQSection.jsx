@@ -87,6 +87,11 @@ const FAQSection = () => {
         "YouTube Playlist Converter is a tool that allows you to download entire YouTube playlists as MP3 files. Simply paste a YouTube playlist URL, and our tool will convert and prepare the audio files for download.",
     },
     {
+      question: "How do I get the URL of a YouTube Playlist?",
+      answer:
+        "To get the URL of a YouTube Playlist, sign in to [Youtube](https://youtube.com), click on the playlist from the left menu (on browsers). In the playlist page, click on the playlist and copy the url in the browser.",
+    },
+    {
       question: "Are there any limitations?",
       answer:
         "Yes, to ensure performance and legal compliance, we limit playlist downloads to 25 items. Each video must be under 1 hour in length. Only public YouTube playlist URLs are supported.",
@@ -100,11 +105,6 @@ const FAQSection = () => {
       question: "How long are my converted playlists saved?",
       answer:
         "Converted playlists are temporarily stored for 15 minutes. After this time, you'll need to reconvert the playlist to download the files again.",
-    },
-    {
-      question: "Can I download YouTube videos?",
-      answer:
-        "We only support the conversion of YouTube videos to Audio in 320kbps quality. For Youtube video downloads, check out [CollectYouTube](https://collectyoutube.com).",
     },
     {
       question: "Can I convert individual YouTube video urls?",
