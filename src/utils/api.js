@@ -20,7 +20,7 @@ export const convertPlaylist = async (url) => {
 export const downloadPlaylistItem = async (playlistId, videoId) => {
   try {
     const response = await axios.get(
-      `${API_BASE_URL}/yt-playlist-download/${playlistId}/${videoId}`,
+      `${API_BASE_URL}/yt-playlist-video-download/${playlistId}/${videoId}`,
       { responseType: "blob" }
     );
     return response.data;

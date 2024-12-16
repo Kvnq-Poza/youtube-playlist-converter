@@ -21,13 +21,19 @@ const PlaylistItems = ({ playlist }) => {
         playlist.playlist_id,
         item.video_id
       );
-      const url = window.URL.createObjectURL(new Blob([blob]));
+
+      const url = window.URL.createObjectURL(
+        new Blob([blob], { type: "audio/mpeg" })
+      );
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", item.filename);
+      link.setAttribute("download", item.filename); // Use the original filename from backend
       document.body.appendChild(link);
       link.click();
       link.parentNode.removeChild(link);
+
+      // Revoke the blob URL to free up memory
+      window.URL.revokeObjectURL(url);
 
       toast.success(`Downloaded: ${item.title}`);
     } catch (error) {

@@ -23,7 +23,6 @@ const PlaylistConverter = () => {
     setError(null); // Reset any previous errors
     try {
       const result = await convertPlaylist(url);
-      console.log("Conversion result:", result); // Add detailed logging
 
       if (result && result.items && result.items.length > 0) {
         setPlaylist(result);
