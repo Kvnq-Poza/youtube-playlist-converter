@@ -89,7 +89,7 @@ const FAQSection = () => {
     {
       question: "How do I get the URL of a YouTube Playlist?",
       answer:
-        "To get the URL of a YouTube Playlist, sign in to [Youtube](https://youtube.com), click on the playlist from the left menu (on browsers). In the playlist page, click on the playlist and copy the url in the browser.",
+        "If you're watching a video that's part of a [Youtube](https://youtube.com) playlist, click the playlist's title to go to its page. Once you're on the playlist page, click the share button to copy the URL. If you're on a browser, you can also find your playlists in the left menu on YouTube, open the one you want, and copy the link from the address bar.",
     },
     {
       question: "Are there any limitations?",
