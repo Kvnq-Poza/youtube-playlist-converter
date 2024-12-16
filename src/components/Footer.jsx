@@ -29,9 +29,14 @@ const Footer = () => {
             <FaEnvelope className="mr-2" /> Contact
           </a>
         </div>
-        <p className="text-sm">
-          © {new Date().getFullYear()} YouTube Playlist Converter. All rights
-          reserved.
+        <p className="text-sm flex justify-center items-center m-auto space-x-2">
+          <span>© {new Date().getFullYear()}</span>
+          <img
+            src="/logo.png"
+            alt="Youtube Playlist Converter logo"
+            className="h-7 w-9"
+          />
+          <span>YouTube Playlist Converter. All rights reserved.</span>
         </p>
       </div>
     </footer>
